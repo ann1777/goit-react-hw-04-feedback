@@ -5,52 +5,56 @@ import { GlobalStyle } from './GlobalStyle';
 import { Statistic } from './Statistic/Statistic';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 
-export class App extends Component {
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
+export const App = () => {
+  const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 });
+
+
+  const leaveFeedback = type => {
+    setFeedback(prevFeedback => ({
+      ...prevFeedback,
+      [type]: prevFeedback[type] + 1,
+    }));
   };
 
-  leaveFeedback = e => {
-    this.setState({ [e]: this.state[e] + 1});
-  }
+  const countTotalFeedback = () => {
+    const { good, neutral, bad } = feedback;
+    return good + neutral + bad;
+  };
 
-  countTotalFeedback() {
-    const values = Object.values(this.state);
-    return values.reduce((acc, value) => acc + value, 0);
-  }
+ 
+  const countPositiveFeedbackPercentage = () => {
+    const totalFeedback = countTotalFeedback();
+    if (totalFeedback === 0) {
+      return 0;
+    }
+    return Math.round((feedback.good / totalFeedback) * 100);
+  };
 
-  countPositiveFeedbackPercentage() {
-    const { good } = this.state;
-    const totalFeedback = this.countTotalFeedback();
-    return Math.round((good / totalFeedback) * 100);
-  }
 
-  render() {
-    const { good, neutral, bad } = this.state;
+  const totalFeedback = countTotalFeedback();
+  const showStatistics = totalFeedback > 0;
 
   return (
     <PageContainer>
         <Section title="Please leave feedback">
           <FeedbackOptions  
             options={["good", "neutral", "bad"]}
-            onLeaveFeedback={this.leaveFeedback}>
+            onLeaveFeedback={leaveFeedback}>
           </FeedbackOptions>      
           </Section>
           <Section title="Statistic">
-            <Statistic
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback(this.state)}
-            positivePercentage={this.countPositiveFeedbackPercentage(
-              this.state
-            )}>
+            {showStatistics ? (
+              <Statistic
+            {...feedback}
+            total={countTotalFeedback}
+            positivePercentage={countPositiveFeedbackPercentage()}>
             </Statistic>
+            ) : (
+              <Notification message="There is no feedback yet" />
+            )}
           </Section>
         <GlobalStyle />
     </PageContainer>    
-  );}
-}
+  );
+};
  
