@@ -3,22 +3,21 @@ import { FeedbackButton } from './FeedbackBtns.styled';
 import PropTypes from 'prop-types';
 
 export const BtnFeedback = ({
-  Icon: Icon = null, 
+  icon: Icon = null, 
   type = 'button', 
-  feed, 
+  option, 
   onClick, 
 }) =>  ( 
     <FeedbackButton
     type={type} 
     onClick={onClick}
-    id={ feed }>
+    id={ option }>
       {Icon && <Icon size="14" />}
-      { feed }
+      { option }
     </FeedbackButton>
   );
 
 BtnFeedback.propTypes = {
   icon: PropTypes.any.isRequired,
-  feed: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };

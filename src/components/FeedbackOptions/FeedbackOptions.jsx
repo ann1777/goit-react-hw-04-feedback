@@ -11,7 +11,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
      {options.map(option => {
       return (
         <BtnFeedback
-          // key={option}
+          key={option}
           type="button"
           icon={Icons[option]}
           onClick={() => onLeaveFeedback(option)}
