@@ -47,7 +47,7 @@ export const App = () => {
   return (
     <PageContainer>
       <Section title="Please leave feedback">
-        <FeedbackOptions
+          <FeedbackOptions
           onLeaveFeedback={leaveFeedback}
           options={feedback}
         ></FeedbackOptions>

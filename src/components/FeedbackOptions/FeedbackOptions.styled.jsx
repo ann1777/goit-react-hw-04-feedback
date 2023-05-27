@@ -8,9 +8,10 @@ import styled from 'styled-components';
 //   padding: 0;
 // `
 
-// export const OptionItem = styled.li`
-//   padding-inline: 10px;
-// `;
+export const BtnFeedback = styled.li`
+  padding-inline: 10px;
+  list-style: none;
+`;
 
 export const BtnWrapper = styled.ul`
   display: flex;
