@@ -14,7 +14,7 @@ export const App = () => {
   const [bad, setBad] = useState(0);
 
   const leaveFeedback = type => {
-    switch (type.target.attributes.option) {
+    switch (type) {
       case 'good':
         setGood(prevState => prevState + 1);
         break;
