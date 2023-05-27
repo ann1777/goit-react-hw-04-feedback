@@ -4,6 +4,7 @@ export const StatList = styled.ul`
   padding: 12px;
   max-width: 480px;
   margin: 0 auto;
+  list-style: none;
 
   border-radius: 4px;
   box-shadow: -1px -1px 1px #fff, 1px 1px 1px #babecc;

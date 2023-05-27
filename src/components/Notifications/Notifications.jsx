@@ -3,7 +3,7 @@ import { Notific } from './Notifications.styled';
 import PropTypes from 'prop-types';
 
 export const Notification = ({ msg }) => {
-  return <Notific Notification>{msg}</Notific>;
+  return <Notific>{msg}</Notific>;
 };
 
 Notification.propTypes = {

@@ -1,23 +1,28 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { BtnWrapper } from './FeedbackOptions.styled';
+import { OptionsList, OptionItem, BtnWrapper } from './FeedbackOptions.styled';
 
-export const FeedbackOptions = ({ options, onLeaveFeedback }) => (
-    <BtnWrapper>
-      <BtnWrapper.BtnFeedback onClick={() => onLeaveFeedback('good')}>
-      Good
-      </BtnWrapper.BtnFeedback>
-      <BtnWrapper.BtnFeedback onClick={() => onLeaveFeedback('good')}>
-      Neutral
-      </BtnWrapper.BtnFeedback>
-      <BtnWrapper.BtnFeedback onClick={() => onLeaveFeedback('good')}>
-      Bad
-      </BtnWrapper.BtnFeedback>
-      </BtnWrapper>
-);
-
+const FeedbackOptions = ({  options, onLeaveFeedback }) => {
+  return (
+    <>
+    <OptionsList>
+      {options.map(option => {
+        return (
+          <OptionItem key={option}>
+          <BtnWrapper.BtnFeedback onClick={onLeaveFeedback} option={option}>
+                {option}
+          </BtnWrapper.BtnFeedback>
+          </OptionItem>
+        );
+      })}
+    </OptionsList>
+    </>
+  );
+};
 
 FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
+
+export default FeedbackOptions;
