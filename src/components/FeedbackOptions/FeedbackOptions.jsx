@@ -1,24 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { OptionsList, OptionItem, BtnWrapper } from './FeedbackOptions.styled';
+import { BtnWrapper } from './FeedbackOptions.styled';
 
 const FeedbackOptions = ({  options, onLeaveFeedback }) => {
   return (
-    <>
-    <OptionsList>
-      {options.map(option => {
-        return (
-          <OptionItem key={option}>
-          <BtnWrapper.BtnFeedback onClick={onLeaveFeedback} option={option}>
+      options.map(option => (
+          <BtnWrapper feed={option} onClick={onLeaveFeedback} key={option}>
                 {option}
-          </BtnWrapper.BtnFeedback>
-          </OptionItem>
-        );
-      })}
-    </OptionsList>
-    </>
-  );
-};
+          </BtnWrapper>
+        )
+      ))
+}
 
 FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
