@@ -62,3 +62,40 @@ Statistic.propTypes = {
   total: PropTypes.number.isRequired,
   positivePercentage: PropTypes.number.isRequired,
 };
+
+// return total ? (
+//   <StatList>
+//     <li>
+//       <StatDescrip>
+//         <HiOutlineHeart size="14" />
+//         Good: <span>{good}</span>
+//       </StatDescrip>
+//     </li>
+//     <li>
+//       <StatDescrip>
+//         <MdSentimentNeutral size="14" />
+//         Neutral: <span>{neutral}</span>
+//       </StatDescrip>
+//     </li>
+//     <li>
+//       <StatDescrip>
+//         <MdThumbDownOffAlt size="14" />
+//         Bad: <span>{bad}</span>
+//       </StatDescrip>
+//     </li>
+//     <li>
+//       <StatDescrip>
+//         <MdOutlineSummarize size="14" />
+//         Total: <span>{total}</span>
+//       </StatDescrip>
+//     </li>
+//     <li>
+//       <StatDescrip>
+//         <MdPercent size="14" />
+//         Positive feedback: <span>{positivePercentage}%</span>
+//       </StatDescrip>
+//     </li>
+//   </StatList>
+// ) : (
+//   <Notification msg="There is no feedback" />
+// );
